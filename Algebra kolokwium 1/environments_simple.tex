@@ -1,0 +1,43 @@
+% Custom Theorem Styles
+\mdfsetup{skipabove=10pt,skipbelow=0pt}
+
+\declaretheoremstyle[
+    headfont=\bfseries,
+    bodyfont=\normalfont,
+    mdframed={
+        linewidth=0.7pt,
+        leftline=true, rightline=true, topline=true, bottomline=true,
+        linecolor=black
+    }
+]{box}
+
+\declaretheoremstyle[
+    headfont=\bfseries,
+    bodyfont=\normalfont,
+    mdframed={
+        linewidth=0.7pt,
+        leftline=true, rightline=false, topline=false, bottomline=false,
+        linecolor=black
+    }
+]{line}
+
+\declaretheoremstyle[
+    headfont=\bfseries,
+    bodyfont=\normalfont
+]{plain}
+
+\declaretheorem[style=box, name=Definicja]{definition}
+\declaretheorem[style=plain, numbered=no, name=Inaczej]{intuitive}
+\declaretheorem[style=plain, numbered=no, name=Notacja]{notation}
+\declaretheorem[style=box, name=Twierdzenie]{theorem}
+\declaretheorem[style=box, numberlike=theorem, name=Wniosek]{lemma}
+\declaretheorem[style=box, name=Fakt]{fact}
+\declaretheorem[style=plain, numbered=no, name=Uwaga]{remark}
+\declaretheorem[style=plain, numbered=no, name=Komentarz]{note}
+\declaretheorem[style=plain, numbered=no, name=Przykład]{example}
+
+\declaretheorem[style=line, numbered=no, name=Dowód, qed=\qedsymbol]{replacementproof}
+\renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
+
+\declaretheorem[style=line, numbered=no, name=Dowód]{tmpexplanation}
+\newenvironment{explanation}[1][]{\begin{tmpexplanation}}{\end{tmpexplanation}}
