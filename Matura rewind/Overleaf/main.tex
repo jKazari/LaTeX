@@ -1,22 +1,224 @@
+\newcommand{\NUMBER}{1a}
+
+\newcommand{\COURSE}{Naukowe Koło Matematyki\\ Studentów PG}
+\newcommand{\TUTOR}{Arkusz\\ Maturalny}
+\newcommand{\DEADLINE}{27 kwietnia 2024}
+
 \documentclass[11pt,a4paper]{scrartcl}
 
-\input{preamble}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{mdframed}
+\usepackage{graphicx}
+\usepackage{lastpage}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{xskak}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{nicefrac}
+\usepackage{svg}
+\usepackage{amsthm}
+\usepackage{gensymb}
+\newtheorem{tw}{Twierdzenie}
+\theoremstyle{definition} 
+\newtheorem*{df}{Definicja} 
+\newtheorem*{uw}{Uwaga}
+\usepackage{titlesec} 
+\definecolor{PGSilver}{RGB}{200,200,200}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+
+\titleformat{\subsection}[runin]
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+
+\input kvmacros
+
+
+\geometry{a4paper,left=3cm, right=3cm, top=3cm, bottom=3cm}
+
+
+\pagestyle {fancy}
+\fancyhead[L]{\TUTOR}
+\fancyhead[C]{\COURSE}
+\fancyhead[R]{\DEADLINE}
+
+\fancyfoot[L]{Poziom rozszerzony}
+\fancyfoot[C]{}
+\fancyfoot[R]{Strona \thepage /\pageref*{LastPage}}
+
+
+\def\header#1#2{
+ 
+\begin{minipage}[t]{.6\textwidth}
+\vspace*{0pt}
+Egzamin maturalny\hspace{8.4em} Formuła 2023
+
+\vspace{1.5em}
+
+  \begin{center}
+    {\Huge 
+MATEMATYKA}
+\vspace{2em}
+
+{\Huge Poziom rozszerzony}
+
+  \end{center}
+\end{minipage}
+\hfill
+\noindent
+\begin{minipage}[t]{.4\textwidth}
+    \centering
+    \vspace*{-\fboxsep}\vspace*{-\fboxrule}
+    {\setlength{\fboxrule}{0pt}
+   \fbox{%
+    \includegraphics[scale=0.2]{logo_samo.png}
+    }
+    }
+\end{minipage}
+
+}
+\usepackage{polski}
+
 
 \begin{document}
+
 \header{\NUMBER}{\DEADLINE}
 
-\input{exercise1.tex}
-\input{exercise2.tex}
-\input{exercise3.tex}
-\input{exercise4.tex}
-\input{exercise5.tex}
-\input{exercise6.tex}
-\input{exercise7.tex}
-\input{exercise8.tex}
-\input{exercise9.tex}
-\input{exercise10.tex}
-\input{exercise11.tex}
-\input{exercise12.tex}
-\input{exercise13.tex}
+ \subsection*{Zadanie 1. (0-2)}
+Aleks posiada beczkę w której znajduje się $200$ litrów soku. W ciągu każdej godziny z beczki tej wyparowuje $\frac{1}{20}$ jej całej zawartości. \textbf{Napisz wzór funkcji $i(t)$, która opisuje ilość soku pozostałego w beczce w zależności od czasu $t$, a następnie wyznacz po ilu godzinach w beczce zostanie mniej niż $75\%$ zawartości soku}.
+\subsection*{Zadanie 2. (0-3)}
+Antek i Basia grywają razem w szachy. Basia w dzieciństwie uczęszczała na kółko szachowe, więc prawdopodobieństwo wygrania przez nią partii jest dwukrotnie większe niż prawdopodobieństwo wygrania przez Antka. \textbf{Wiedząc, że każdą grę ktoś wygrywa, oblicz prawdopodobieństwo tego, że Antek wygra dokładnie dwa razy w przeciągu pięciu gier}.
+\subsection*{Zadanie 3. (0-3)}
+\textbf{Wyznacz wszystkie takie styczne do wykresu funkcji $f$ zadanej wzorem $f(x)=\frac{3x^2+14x+3}{x^2+3x+1}$, które są prostopadłe do prostej $x=9$}.
+\subsection*{Zadanie 4. (0-3)}
+\textbf{Wykaż, że dla każdej liczby rzeczywistej $x>1$ oraz każdej liczby rzeczywistej $y<1$ prawdziwa jest nierówność $x^{2}y^{2}-5xy+x+y+3>0$}. 
+
+\subsection*{Zadanie 5. (0-3)} 
+Poprzez $\mathrm{DC}$ i $\mathrm{AB}$ oznaczmy sieczne okręgu, które przecinają się w punkcie $\mathrm{P}$ (zob. rysunek poniżej). \textbf{Niech dane będą następujące wartości: $|\mathrm{AB}| = |\mathrm{BP}| = 8$, $\measuredangle \mathrm{ABC} = 90^\circ$ oraz $|\mathrm{BC}| = 6$. Oblicz pole czworokąta $\mathrm{ABCD}$}.
+\begin{figure}[H]
+\def\svgwidth{0.55\columnwidth}
+\centering
+\input{zad5.pdf_tex}
+\end{figure}
+\subsection*{Zadanie 6. (0-3)}
+\textbf{Rozwiąż następujące równanie trygonometryczne}:
+$$
+ \sin^2(2x) + 4\cos(2x) =4 
+$$
+\textbf{Zapisz wszystkie obliczenia}.
+
+\subsection*{Zadanie 7. (0-4)}
+Niech dany będzie taki ostrosłup prawidłowy sześciokątny, że jego pole powierzchni bocznej jest dwukrotnie większe od jego pola podstawy. \textbf{Wyznacz wartość $\tan^{2}(\alpha)$ kąta $\alpha$ zawartego między sąsiednimi ścianami bocznymi tego ostrosłupa.}
+
+\subsection*{Zadanie 8. (0-4)}
+Niech dany będzie czworokąt $\mathrm{ABCD}$ o następujących długościach boków: $|\mathrm{AD}|=3$, $|\mathrm{CD}|=3\sqrt{3}$, $|\mathrm{BC}|=2\sqrt{2}-\sqrt{3}$. Czworokąt ten dodatkowo można wpisać w okrąg. \textbf{Oblicz długość boku $|\mathrm{AB}|$ i przedstaw tę długość w postaci liczby naturalnej, wiedząc, że kąt pomiędzy bokami $|\mathrm{AD}|$ i $|\mathrm{DC}|$ wynosi $30\degree$}.
+
+\subsection*{Zadanie 9. (0-4)}
+\textbf{Rozwiąż poniższą nierówność:}
+\begin{align*}
+\sqrt{4x^{2}-12x+9}\leq 1+\sqrt{9x^{2}-12x+4}
+\end{align*}
+\emph{Wskazówka: skorzystaj z tego, że $\sqrt{a^{2}}=|a|$ dla każdej liczby rzeczywistej $a$.}
+
+
+\subsection*{Zadanie 10. (0-4)}
+Budujemy nieskończony ciąg figur $\{F_n\}_{n=1}^\infty$.
+Figura $F_1$ jest kwadratem o boku długości $a=a_{1}$.
+Kolejne figury $F_n$ są budowane według następujących reguł:
+\begin{itemize}
+    \item Podczas budowy figury $F_{n}$ doklejamy kolejne kwadraty \underline{jedynie} do kwadratów, które zostały dodane w kroku numer ($n-1$). 
+    \item Dzielimy boki figury $F_{n-1}$ na trzy równe części.
+    \item Do środkowej części każdego z podzielonych boków doklejamy mniejszy kwadrat o boku długości $\frac{a_{n-1}}{3}$.
+\end{itemize}
+(zob. rysunek poniżej).
+
+\begin{figure}[h!] 
+\def\svgwidth{0.25\columnwidth} 
+\label{maps}
+\input{zad101.pdf_tex}
+    \qquad
+    \centering
+    \subfloat{{\def\svgwidth{0.4\columnwidth}
+\input{zad102.pdf_tex}}}%
+    \subfloat{{\subfloat{{\def\svgwidth{0.4\columnwidth}
+\input{zad103.pdf_tex}}}}}%
+\label{maps}
+\end{figure}
+\begin{enumerate}
+    \item \textbf{Wykaż, że pole $P_{n}$ figury $F_n$ wyraża się następującym wzorem}:
+$$
+P_n = a^2\left({5\over 3} - {2 \over {3^n}}\right)
+$$
+\item \textbf{Wyznacz wszystkie wartości liczby $a$, dla której pole figury $F_{\infty}$ jest mniejsze od $\frac{1}{3}$.}
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Zadanie 11. (0-5)}
+\textbf{Wyznacz wszystkie wartości parametru rzeczywistego $m$, dla którego równanie:}
+\begin{align*}
+        (m+2)x^{2}+3mx+m-2=0
+\end{align*}
+\textbf{ma dwa różne rozwiązania rzeczywiste $x_{1}$ oraz $x_{2}$ spełniające warunek $x_{1}^{3}+x_{2}^{3}>1$}. \\
+
+$\left(\text{Odpowiedź: }m\in \left(-\infty,\frac{11-3\sqrt{21}}{17} \right)\cup\left(\frac{11+3\sqrt{21}}{17} ,\infty\right) \right)$
+
+\subsection*{Zadanie 12. (0-6)} 
+Treść zadania. MW \\
+Funkcja $f$ jest określona wzorem
+\begin{align*}
+    f(x)= \sin{\frac{29\pi}{6}}x^{\binom{4}{1}}-\frac{1}{\sqrt{3}}\tan{\frac{7\pi}{6}}x^{3}-\frac{\log_{9}{16}}{\frac{1}{2}\log_{3}{2}}x^{2!}+\left(2+1+\frac{1}{2}+\frac{1}{4}+\dots \right)x
+\end{align*}
+dla każdej liczby dodatniej $x$. \\
+\textbf{Pokaż, że daną funkcję można przedstawić w postaci $f(x)=\frac{1}{2}x^{4}-\frac{1}{3}x^{3}-4x^{2}+4x$}.
+\textbf{Wyznacz największą wartość funkcji $f$ dla $x\in \left(0,1\right)$.}
+$\left(\text{Odpowiedź: } f(x)=\frac{95}{96} \right)$
+
+
+\subsection*{Zadanie 13. (0-6)}
+W kartezjańskim układzie współrzędnych kreślimy dwie parabole:
+\begin{itemize}
+    \item $f(x) = -\frac{1}{4}x^2-2$
+    \item $g(x) = \frac{1}{8}x^2 + \frac{3}{2}$
+\end{itemize}
+Prosta $h$ przecina obie parabole w punktach $A$ oraz $B$ (rysunek poniżej). Wiemy, że tangens kąta nachylenia prostej $h$ wynosi 2, i że odcięta punktu $A$ równa się $0$. Punkty $C$ i $D$ są równo odległe od punktów $A$ i $B$ oraz ich odległość od prostej $h$ wynosi $\sqrt{5}$. 
+
+\begin{figure}[H]
+\def\svgwidth{0.55\columnwidth}
+\centering
+\input{zad13.pdf_tex}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{Wyznacz współrzędne punktów $C$ i $D$}. (odp. $C=(-1,1), D=(3,-1)$)
+    \item \textbf{Wyznacz promień okręgu wpisanego w czworokąt $ABCD$}. (odp. $r=\frac{\sqrt{10}}{2}$)
+
+\end{enumerate}
 
 \end{document}

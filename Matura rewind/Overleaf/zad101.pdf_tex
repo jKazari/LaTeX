@@ -1,6 +1,6 @@
-%% Creator: Inkscape 1.3.2 (091e20e, 2023-11-25, custom), www.inkscape.org
+%% Creator: Inkscape 1.1.2 (b8e25be833, 2022-02-05), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'figure1_svg-tex.pdf' (pdf, eps, ps)
+%% Accompanies image file 'zad101.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{397.33177185bp}%
+    \setlength{\unitlength}{68.51499939bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,9 +50,12 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.77587255)%
+  \begin{picture}(1,0.99287749)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{figure1_svg-tex.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{zad101.pdf}}%
+    \put(0.85797559,0.38851727){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
+    \put(0.38607875,0.87410101){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
+    \put(0.38607725,0.38851848){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$F_{1}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
