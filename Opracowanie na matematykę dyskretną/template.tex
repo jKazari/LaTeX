@@ -1,0 +1,386 @@
+\documentclass[a4paper,10pt]{article}
+\input{definitions}
+\input{preamble}
+\input{environments_simple}
+
+\usepackage{XCharter}
+\usepackage{cancel}
+
+\title{\Large{Solutions to exercises nr 1 - pigeonhole principle, the principle of inclusion and exclusion, different ways of counting.}}
+\author{Zachariasz Jażdżewski}
+\date{}
+
+\begin{document}
+\maketitle
+
+%----Proper document------------------------------------------------------------
+
+\begin{problem}
+	In a room, there are \( n \) people. Show that at least two of them know the same number of people in that room.
+
+	Assume each person knows a different number of people. Possible values range \\ from \( 0, 1, 2, \ldots, n-1 \).
+
+	However, if someone knows \( 0 \) people, no one can know \( n-1 \) people, as knowing \( n-1 \) people means knowing everyone except oneself, which conflicts with someone knowing \( 0 \) people. 
+
+	Similarly, if someone knows \( n-1 \) people, no one can know \( 0 \) people.
+
+	Thus, possible values of known people are in the ranges:
+	\begin{itemize}
+		\item \( 0 \) to \( n-2 \)
+		\item \( 1 \) to \( n-1 \)
+	\end{itemize}
+
+	In both cases, there are \( n-1 \) different values for \( n \) people. By the pigeonhole principle, at least two people must know the same number of people. \(\ \square \)
+\end{problem}
+
+\begin{problem}
+	Show that in a group of 20 people, at least two must have been born in the same month.
+
+	Distribute \( n = 20 \) people among \( k = 12 \) months. By the pigeonhole principle, at least one month will have at least \( \left\lceil \frac{20}{12} \right\rceil = 2 \) people. Therefore, at least two people were born in the same month. \(\ \square \)
+\end{problem}
+
+\begin{problem}
+	In a math club meeting with 50 attendees, can you select 8 people who were born on the same day of the week?
+
+	Distribute \( n = 50 \) people among \( k = 7 \) days of the week. By the pigeonhole principle, at least one day will have at least \( \left\lceil \frac{50}{7} \right\rceil = 8 \) people. Therefore, at least 8 people were born on the same day of the week.
+\end{problem}
+
+\begin{problem}
+	Show that if Mark has 50 candies, he cannot distribute them among 11 friends so that each friend gets a different number of candies (assuming each gets at least one candy).
+
+	If each friend gets a different number of candies and each gets at least one, the smallest possible set of such numbers is \( 1, 2, 3, \dots, 11 \). The sum of these numbers is \( 1 + 2 + 3 + \dots + 11 = \frac{11 \cdot 12}{2} = 66 \). Since the sum 66 exceeds 50, it is not possible to distribute 50 candies such that each friend gets a different number. \(\ \square \)
+\end{problem}
+
+\begin{problem}
+	Select any 10 different natural numbers \( a_1, a_2, \ldots, a_{10} \) from \( 1, 2, 3, \ldots, 100 \). Show that in the set \( S = \{ a_1, a_2, \ldots, a_{10} \} \), there are two disjoint subsets with the same sum.
+
+	The total number of possible subsets of set \( S \) is \( 2^{10} = 1024 \). The largest possible sum of the numbers in set \( S \) is the sum of the 10 largest numbers in the range from 1 to 100, which is \( 91 + 92 + \ldots + 100 = 955 \). Possible subset sums range from 0 to 955, giving 956 possible sums.
+
+	Since there are 1024 possible subsets and only 956 possible sums, by the pigeonhole principle, at least two subsets must have the same sum. If these subsets are disjoint, the claim is proven. If they are not disjoint, simply remove the common elements, and the subsets will still have the same sum. \(\ \square \)
+\end{problem}
+
+\begin{problem}
+	Show that in any set of \( n \) integers, there is a subset whose sum is divisible by \( n \).
+	
+	Each element \( a_i \) in the set \( \{ a_1, a_2, \ldots, a_n \} \) can be represented as a remainder when divided by \( n \). The sums of these elements can range from \( 0 \) to \( n-1 \). 
+	
+	There are \( n+1 \) possible remainders for the sums:
+	\[
+		\begin{aligned}
+			&\{ 0, 1, 2, \ldots, n-1 \}
+		\end{aligned}
+	\]
+	
+	By the pigeonhole principle, at least two sums will have the same remainder, meaning their difference, which is divisible by \( n \), is the sum of a subset of numbers \( a_i \), which must also be divisible by \( n \). \(\ \square \)
+\end{problem}
+
+\begin{problem}
+	There are 30 students in a class. 20 students study English, 15 study German, and 10 study French. Among them, 5 students study both English and French, 6 study both English and German, and 6 study both German and French. How many students study all three languages?
+
+	Using the principle of inclusion and exclusion:
+	\[
+		\begin{aligned}
+		& |\Omega| = 30 \\
+		& |E| = 20 \\
+		& |G| = 15 \\
+		& |F| = 10 \\
+		& |E \cap F| = 5 \\
+		& |E \cap G| = 6 \\
+		& |G \cap F| = 6 \\
+		& |E \cap G \cap F| = ?
+		\end{aligned}
+	\]
+	\[
+		\begin{aligned}
+			|E \cup G \cup F| &= |E| + |G| + |F| - |E \cap F| - |E \cap G| - |G \cap F| + |E \cap G \cap F| \\
+			30 &= 20 + 15 + 10 - 5 - 6 - 6 + |E \cap G \cap F| \\
+			30 &= 28 + |E \cap G \cap F| \\
+			|E \cap G \cap F| &= 2
+		\end{aligned}
+	\]
+
+	Therefore, 2 students study all three languages. \(\ \square \)
+\end{problem}
+
+\newpage
+
+\begin{problem}
+	There are 16 translators who translate Russian, Spanish, and English, seeking employment. Among them, 12 speak Russian, 15 speak Spanish, and the same number speak English as the number of those who speak Russian and Spanish. 8 translators speak both Russian and English. How many speak both Spanish and English but not Russian?
+	\[
+		\begin{aligned}
+			&|\Omega| = 16 \\
+			&|R| = 12 \\
+			&|S| = 15 \\
+			&|E| = |R \cap S| \\
+			&|E \cap R| = 8 \\
+			&|(E \cap S) \setminus R| = \ ?
+		\end{aligned}
+	\]
+
+	Using the principle of inclusion and exclusion:
+	\[
+		\begin{aligned}
+			|E \cup R \cup S| &= |E| + |R| + |S| - |E \cap R| - |E \cap S| - |R \cap S| + |E \cap R \cap S| \\
+			16 &= \cancel{|E|} + 12 + 15 - 8 - |E \cap S| \cancel{- |E|} + |E \cap R \cap S| \\
+			16 &= 19 - |E \cap S| + |E \cap R \cap S| \\
+			|E \cap S| - |E \cap R \cap S| &= 3 \\
+			|(E \cap S)\setminus R| &= |E \cap S| - |E \cap R \cap S| = 3
+		\end{aligned}
+	\]
+
+	And we have:
+	\[
+		\begin{aligned}
+			&|E \cap S \setminus R| = 3
+		\end{aligned}
+	\]
+
+	Therefore, 3 translators speak both Spanish and English but not Russian. \(\ \square \)
+\end{problem}
+
+\begin{problem}
+	In a certain class, 20 students are taking the mathematics exam, 16 students are taking the geography exam, and 14 students are taking the physics exam. How many students are in this class if each student takes at least one of these exams, no student takes all three exams, 10 students take both mathematics and physics, 6 students take both mathematics and geography, and 4 students take both physics and geography?
+
+	Given:
+	\[
+		\begin{aligned}
+			&|M| = 20 \\
+			&|G| = 16 \\
+			&|P| = 14 \\
+			&|\Omega| = |M \cup G \cup P| \\
+			&|M \cap G \cap F| = 0 \\
+			&|M \cap P| = 10 \\
+			&|M \cap G| = 6 \\
+			&|P \cap G| = 4
+		\end{aligned}
+	\]
+
+	Using the principle of inclusion and exclusion:
+	\[
+		\begin{aligned}
+			& |M \cup G \cup P| = |M| + |G| + |P| - |M \cap G| - |M \cap P| - |G \cap P| + |M \cap G \cap P| \\
+			& |M \cup G \cup P| = 20 + 16 + 14 - 6 - 10 - 4 + 0 \\
+			& |M \cup G \cup P| = 30
+		\end{aligned}
+	\]
+
+	Thus, there are 30 students in the class.
+\end{problem}
+
+\begin{problem}
+	Among 30 academic staff members, each of whom works in the department of mathematics (M), physics (P), or biology (B), 15 work in the mathematics department, 12 work in the physics department, 15 do not work in the biology department, 12 mathematics department staff do not work in the physics department, 11 biology department staff do not work in the physics department, and 6 work in both the biology and mathematics departments. How many work in all three departments simultaneously?
+
+	Given:
+	\[
+		\begin{aligned}
+			&|\Omega| = 30 \\
+			&|M| = 15 \\
+			&|P| = 12 \\
+			&|\Omega \setminus B| = 15 \implies |B| = 15\\
+			&|M \setminus P| = 12 \\
+			&|B \setminus P| = 11 \\
+			&|B \cap M| = 6 \\ \\
+			&|M \cap P \cap B| = ?
+		\end{aligned}
+	\]
+
+	Using the principle of inclusion and exclusion:
+	\[
+		\begin{aligned}
+			|\Omega| = &\ |M| + |P| + |B| - |M \cap P| - |M \cap B| - |P \cap B| + |M \cap P \cap B| \\ 
+			30 = &\ \ 15 \,\,+ 12 \,\,+ 15\,\, - \quad\ \,\,3 \quad\,\,- \quad \ \,\,6 \quad\ \,- \quad\,\,4 \quad\,\,+ |M \cap P \cap B| \\
+			30 = &\ 29 + |M \cap P \cap B| \\
+			|M \cap P \cap B| = &\ 1
+		\end{aligned}
+	\]
+
+	Thus, only one staff member works in all three departments simultaneously.
+\end{problem}
+
+\begin{problem}
+	How many three-digit numbers contain the digit 2 or 3?
+
+	We consider all possible combinations of digits that contain either 2 or 3. We can write the number of these combinations as follows:
+	\[
+		\begin{aligned}
+			& \underline{H}\ \underline{T}\ \underline{U} & \\
+			1. \quad & 2 \cdot 8 \cdot 8 & \quad = 128 \\
+			2. \quad & 7 \cdot 2 \cdot 8 & \quad = 112 \\
+			3. \quad & 7 \cdot 8 \cdot 2 & \quad = 112 \\
+			4. \quad & 2 \cdot 2 \cdot 8 & \quad = 32 \\
+			5. \quad & 7 \cdot 2 \cdot 2 & \quad = 28 \\
+			6. \quad & 2 \cdot 8 \cdot 2 & \quad = 32 \\
+			7. \quad & 2 \cdot 2 \cdot 2 & \quad = 8
+		\end{aligned}
+	\]
+
+	Explanation:
+	\begin{itemize}
+		\item $|\{ 2,3 \}| \cdot |\{ 0,1,4,5,6,7,8,9 \}| \cdot |\{ 0,1,4,5,6,7,8,9 \}| = 2 \cdot 8 \cdot 8$
+		\item $|\{ 1,4,5,6,7,8,9 \}| \cdot |\{ 2,3 \}| \cdot |\{ 0,1,4,5,6,7,8,9 \}| = 7 \cdot 2 \cdot 8$
+		\item $|\{ 1,4,5,6,7,8,9 \}| \cdot |\{ 0,1,4,5,6,7,8,9 \}| \cdot |\{ 2,3 \}| = 7 \cdot 8 \cdot 2$
+		\item $|\{ 2,3 \}| \cdot |\{ 2,3 \}| \cdot |\{ 0,1,4,5,6,7,8,9 \}| = 2 \cdot 2 \cdot 8$
+		\item $|\{ 1,4,5,6,7,8,9 \}| \cdot |\{ 2,3 \}| \cdot |\{ 2,3 \}| = 7 \cdot 2 \cdot 2$
+		\item $|\{ 2,3 \}| \cdot |\{ 0,1,4,5,6,7,8,8 \}| \cdot |\{ 2,3 \}| = 2 \cdot 8 \cdot 2$
+		\item $|\{ 2,3 \}| \cdot |\{ 2,3 \}| \cdot |\{ 2,3 \}| = 2 \cdot 2 \cdot 2$
+	\end{itemize}
+
+	So, the total number of such numbers is:
+	\[
+		128 + 112 + 112 + 32 + 28 + 32 + 8 = 452
+	\]
+\end{problem}
+
+\begin{problem}
+	How many integers in the set $\{ 1,2,3,\dots,1000 \}$ are divisible by 7 or 13?
+
+	The number of such integers is:
+	\[
+		|A \cup B| = |A| + |B| - |A \cap B|
+	\]
+
+	where $A$ is the set of numbers divisible by 7, and $B$ is the set of numbers divisible by 13.
+
+	Thus:
+	\[
+		|A \cup B| = \left\lfloor  \frac{1000}{7}  \right\rfloor + \left\lfloor  \frac{1000}{13}  \right\rfloor - \left\lfloor  \frac{1000}{91}  \right\rfloor = 142 + 76 - 10 = 208 
+	\]
+
+	So the solution is 208.
+\end{problem}
+
+\begin{problem}
+	How many integers in the set $\{ 1,2,3,\dots,2000 \}$ are divisible by 9, 11, 13, or 15?
+
+	The number of such integers is:
+	\[
+		|A \cup B \cup C \cup D|
+	\]
+
+	where A,B,C,D are the sets of numbers divisible by 9, 11, 13, and 15, respectively.
+
+	Using the principle of inclusion and exclusion, we need to calculate the cardinalities of these sets.
+
+	Calculating the number of integers divisible by each single number:
+	\[
+		|A| = \left\lfloor  \frac{2000}{9}  \right\rfloor = 222, \quad 
+		|B| = \left\lfloor  \frac{2000}{11}  \right\rfloor = 181
+	\]
+	\[
+		|C| = \left\lfloor  \frac{2000}{13}  \right\rfloor = 153, \quad |D| = \left\lfloor  \frac{2000}{15}  \right\rfloor = 133
+	\]
+
+	Now, calculating the number of integers divisible by pairs of numbers:
+	\[
+		|A \cap B| = \left\lfloor  \frac{2000}{45}  \right\rfloor = 44, \quad
+		|A \cap C| = \left\lfloor  \frac{2000}{99}  \right\rfloor = 20
+	\]
+	\[
+		|A \cap D| = \left\lfloor  \frac{2000}{117}  \right\rfloor = 17, \quad 
+		|B \cap C| = \left\lfloor  \frac{2000}{143}  \right\rfloor = 13
+	\]
+	\[
+		|B \cap D| = \left\lfloor  \frac{2000}{165}  \right\rfloor = 12, \quad
+		|C \cap D| = \left\lfloor  \frac{2000}{195}  \right\rfloor = 10
+	\]
+
+	Now, calculating the number of integers divisible by triplets of numbers:
+	\[
+		|A \cap B \cap C| = \left\lfloor  \frac{2000}{1287}  \right\rfloor = 1, \quad 
+		|A \cap B \cap D| = \left\lfloor  \frac{2000}{495}  \right\rfloor = 4
+	\]
+	\[
+		|A \cap C \cap D| = \left\lfloor  \frac{2000}{585}  \right\rfloor = 3, \quad
+		|B \cap C \cap D| = \left\lfloor  \frac{2000}{2145}  \right\rfloor = 0
+	\]
+
+	Finally, calculating the number of integers divisible by all four numbers:
+	\[
+		|A \cap B \cap C \cap D| = \left\lfloor  \frac{2000}{19305}  \right\rfloor = 0
+	\]
+
+	Using the principle of inclusion and exclusion, we find:
+	\[
+		\begin{aligned}
+			|A \cup B \cup C \cup D| =&\ 222 + 181 + 153 + 133 \ -\\
+			& - 44 - 20 - 17 - 13 - 12 - 10 \ +\\
+			& + 1 + 4 + 3 + 0 - 0 = \\
+			=&\ 581
+		\end{aligned}
+	\]
+
+	So, there are 581 such integers.
+\end{problem}
+
+\begin{problem}
+	How many solutions are there to the equation $x_{1}+x_{2}+x_{3}+x_{4}+x_{5}+x_{6}=9$, where $x_i$ is a non-negative integer?
+
+	Using the stars and bars method, the number of integer solutions is given by
+	\[
+		{{n+k}\choose{k}} = {{14}\choose{5}} = \frac{14!}{5! \cdot 9!} = \frac{\cancel{9!} \cdot \cancel{10} \cdot 11 \cdot \cancel{12} \cdot 13 \cdot 14}{\cancel{120} \cdot \cancel{9!}} = 11 \cdot 13 \cdot 14 = 2002
+	\]
+\end{problem}
+
+\begin{problem}
+	How many solutions are there to the equation $x_{1}+x_{2}+x_{3}+x_{4}+x_{5}+x_{6}=9$, where $x_i$ is a positive integer?
+
+	Since $x_i$ are positive integers, we have $x_{i} \geq 1$.
+
+	By substituting variables to transform the equation to one where all variables are non-negative integers:
+	\[
+		\begin{aligned}
+			&y_{1} = x_{1}-1 \implies x_{1} = y_{1}+1 \\
+			&y_{2} = x_{2}-1 \implies x_{2} = y_{2}+1 \\
+			&y_{3} = x_{3}-1 \implies x_{3} = y_{3}+1 \\
+			&y_{4} = x_{4}-1 \implies x_{4} = y_{4}+1 \\
+			&y_{5} = x_{5}-1 \implies x_{5} = y_{5}+1 \\
+			&y_{6} = x_{6}-1 \implies x_{6} = y_{6}+1
+		\end{aligned}
+	\]
+
+	Substituting these into the equation gives:
+	\[
+		\begin{aligned}
+			y_{1}+1+y_{2}+1+y_{3}+1+y_{4}+1+y_{5}+1+y_{6}+1 &= 9 \quad | - (1+1+1+1+1+1)\\
+			y_{1} + y_{2} + y_{3} + y_{4} + y_{5} + y_{6} &= 3
+		\end{aligned}
+	\]
+
+	Using the stars and bars method, the number of integer solutions is given by
+	\[
+		{{n+k}\choose{k}} = {{8}\choose{3}} = \frac{8!}{3! \cdot 5!} = \frac{\cancel{5!} \cdot \cancel6 \cdot 7 \cdot 8}{\cancel6 \cdot \cancel{5!}} = 7 \cdot 8 = 56
+	\]
+\end{problem}
+
+\begin{problem}
+	How many solutions are there to the equation $x_{1}+x_{2}+x_{3}+x_{4}+x_{5}+x_{6} = 9$, where \\$x_{1} \geq 1,\ x_{2} \geq 2,\ x_{3} \geq 4,\ x_{4} \geq -5,\ x_{5} \geq -1,\ x_{6} \geq 0$?
+
+	By substituting variables to transform the equation to one where all variables are non-negative integers:
+	\[
+		\begin{aligned}
+			&y_{1} = x_{1}-1 \implies x_{1} = y_{1}+1 \\
+			&y_{2} = x_{2}-2 \implies x_{2} = y_{2}+2 \\
+			&y_{3} = x_{3}-4 \implies x_{3} = y_{3}+4 \\
+			&y_{4} = x_{4}+5 \implies x_{4} = y_{4} - 5 \\
+			&y_{5} = x_{5}+1 \implies x_{5} = y_{5}-1 \\
+			&y_{6} = x_{6}
+		\end{aligned}
+	\]
+
+	Substituting these into the equation gives:
+	\[
+		\begin{aligned}
+			y_{1}+1+y_{2}+2+y_{3}+4+y_{4}-5+y_{5}-1+y_{6} &= 9 \quad | - (1+2+4-5-1)\\
+			y_{1} + y_{2} + y_{3} + y_{4} + y_{5} + y_{6} &= 8
+		\end{aligned}
+	\]
+
+	Using the stars and bars method, the number of integer solutions is given by
+	\[
+		{{n+k}\choose{k}} = {13\choose 5} = \frac{13!}{5! \cdot 8!} = \frac{\cancel {8!} \cdot 9 \cdot \cancel{10} \cdot 11 \cdot \cancel{12} \cdot 13}{\cancel{120} \cdot \cancel{8!}} = 9 \cdot 11 \cdot 13 = 1287
+	\]
+\end{problem}
+
+%-------------------------------------------------------------------------------
+
+\end{document}
