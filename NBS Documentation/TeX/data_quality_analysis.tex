@@ -1,0 +1,97 @@
+\section{Data Quality Analysis}
+
+As part of the NBS system exploration, a comprehensive analysis of the data stored in the system was conducted. This section highlights the major data quality issues identified during the analysis, including data incompleteness, inconsistencies, and duplicates. These issues present significant challenges to the system’s reliability and make data analysis difficult and time-consuming.
+
+\subsection{Data Collection and Methodology}
+
+The data has been collected using the Dataverse Web API as well as the Power BI Web API. I have created a Python script, \texttt{api\_connect.py}, which consists of a \texttt{DataverseConnector} class as well as a \texttt{connect\_to\_powerbi} function. The script handles the connection to APIs and user authentication. For more details on this script, refer to the \hyperref[sec:Appendices]{Appendices}. The code is well documented and commented.
+
+The data for each entity has been saved to \texttt{.csv} files, which are available in the \hyperref[sec:Appendices]{Appendices}. These files serve as the primary dataset for the analysis conducted in this document.
+
+...
+
+\subsection{Data Quality Issues}
+
+The overall data quality of the whole dataset is very poor. The data cleaning and preparation processes for any analysis are tedious and time-consuming due to a number of issues. This section gives an overview of common issues found while exploring and analyzing the NBS data.
+
+\subsubsection{Nondescriptive Logical Attribute Names}
+Many attributes have unclear or incorrect logical names, making it difficult to understand their purpose. A common issue is the use of attribute names ending in \texttt{...id} that store names, not unique IDs as expected.
+
+\textbf{Example}\\
+The \texttt{cr675\_testorder} entity has an attribute \texttt{cr91b\_depthofpenetrationinmm}, which stores boolean values (\texttt{True}/\texttt{False}) instead of numeric data. Upon investigation, this attribute was found to indicate whether the test order was for hard or soft ballistics. A more appropriate name would be \texttt{cr91b\_ishardballistics}.
+
+\newpage
+
+\subsubsection{Inconsistent Attribute Formats}
+Most categorical attributes suffer from inconsistent formats, making analysis difficult or impossible.
+
+\textbf{Example}\\
+The \texttt{cr675\_testdashboardammotypedictionary} entity contains a \texttt{cr675\_bulletcalliber} attribute, which is of \texttt{string} type. Example values include:
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|}
+	\hline
+	\textbf{BulletCaliber} \\
+	\hline
+	9 x 19 mm \\
+	5.56 \\
+	2,642mm \\
+	7,62 \\
+	7,62x39 AK47 \\
+	308 Win. \\
+	.40 / 10 mm \\
+	.357 in \\
+	\hline
+	\end{tabular}
+\end{table}
+
+This data is not useful for analysis without extensive cleaning and standardization. Different formats, additional information stored alongside the caliber (e.g., \texttt{AK47}), ambiguities in values and units make it very hard to analyze.
+
+For data to be useful and ready for analysis, it needs to be standardized and consistent. The \texttt{cr675\_bulletcalliber} should store a caliber value in one unit of choice (e.g., millimeters or inches) with consistent formatting. Using the above example, the proper data should look like this:
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|}
+	\hline
+	\textbf{BulletCaliber} \\
+	\hline
+	9.00 \\
+	5.56 \\
+	2.64 \\
+	7.62 \\
+	7.62 \\
+	7.82 \\
+	10.00 \\
+	9.00 \\
+	\hline
+	\end{tabular}
+\end{table}
+
+\subsubsection{Wrong Attribute Types}
+Many attributes are stored as strings when they should contain uniform numeric values, further complicating analysis.
+
+\newpage
+
+\subsubsection{Duplicate Information}
+Several attributes contain redundant information. In some cases, multiple columns needed to be merged to obtain meaningful data during the exploration process.
+
+\textbf{Example}\\
+Using the same entity as above, it contains attributes \texttt{cr675\_produceraccount}, \texttt{cr675\_name}, and \texttt{cr675\_bulletnamewithproducername}. The last one is just a join of the two previous attributes and is redundant. Moreover, most of the \texttt{cr675\_produceraccount} attribute is empty, so \texttt{cr675\_bulletnamewithproducername} contains just a duplicate of \texttt{cr675\_name} with a colon appended.
+
+\subsubsection{High Percentage of Empty Attributes}
+A significant portion of the attributes are largely empty, with minimal data recorded. This indicates a lack of enforcement of data entry standards and contributes to the overall data incompleteness.
+
+\textbf{Example}\\
+In the \texttt{cr675\_testdashboardprocedement} entity, 13 custom attributes have less than 50\% data completeness, with six of these attributes entirely empty.
+
+\subsubsection{Lack of Required Fields}
+Few attributes are marked as "required," resulting in significant data gaps. This exacerbates the incompleteness of the dataset and reduces its overall reliability.
+
+\subsubsection{Redundant Entities and Attributes}
+Some entities and attributes appear to be redundant, either due to duplication or subsetting of data from other entities. This redundancy adds unnecessary complexity to the data model.
+
+\subsection{Summary}
+The data is mostly unusable, even for data cleaning. The lack of enforcement of data input results in incomplete datasets. The lack of standardization of formatting and attribute types leads to data being mostly stored in text, often with comments and additional redundant information, which is not ideal for analysis.
+
+It seems that these entities are being used by the engineers like Excel spreadsheets when they should be treated as datasets. It is mostly useless to collect data in this manner because it cannot be analyzed easily, or the cleaning process requires verifying every row and cross-referencing documentation or consulting an expert on domain knowledge.

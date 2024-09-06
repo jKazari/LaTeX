@@ -1,0 +1,77 @@
+\section{Recommendations}
+
+\subsection{Continue Data Profiling}
+Data profiling should be an ongoing process to identify and address issues across all entities. Each table should be inspected individually, and issues should be noted. For example, the \texttt{tables\_inventory.json} file can be extended with detailed issue summaries for each entity. Example:
+
+\begin{verbatim}
+[
+    {
+        "display-name": "NBS Test Order",
+        "logical-name": "cr675_testorder",
+        "set-name": "cr675_testorders",
+        "primary-id": "cr675_testorderid",
+        "primary-name": "cr675_orderid",
+        "attribute-count": 90,
+        "custom-attribute-count": 72,
+        "row-count": 3394,
+        "issues-summary": [
+            "Issue 1",
+            "Issue 2",
+            "Issue 3"
+            // More issues...
+        ],
+        "attributes": [
+            {
+                "display-name": "Client",
+                "logical-name": "cr675_client",
+                "description": "cr675_testorder - cr675_client",
+                "data-type": "Lookup",
+                "is-custom": true,
+                "statistics": {
+                    "non-null-count": 3394,
+                    "unique-values-count": 9,
+                    "top-5-most-frequent-values": {
+                        "NFM_P CC205 RDB Ballistic": 1161,
+                        "NFM_P CC107 QC": 1143,
+                        "NFM_P CC208 RDB Strategic": 844,
+                        "NFM_P CC210 HJELM": 147,
+                        "NFM US LLC": 60
+                    }
+                },
+                "issues": [
+                    "Issue 1",
+                    "Issue 2",
+                    "Issue 3"
+                    // More issues...
+                ]
+            }
+            // More attributes... 
+        ],
+        "relationships": [
+            {
+                "related-table": "systemuser",
+                "relationship_type": "many-to-one",
+                "is-custom-relationship": false,
+                "local-attribute": "createdby",
+                "foreign-attribute": "systemuserid"
+            }
+            // More relationships...
+        ]
+    }
+    // More entities...
+]
+\end{verbatim}
+
+\subsection{Migrate NBS System from Default Environment}
+The NBS system should be migrated from the \texttt{NFM Group Def} environment to the dedicated \texttt{NFM Group NBS DEV} environment. This migration will improve data management, security, and scalability, ensuring a more stable and efficient system.
+
+\subsection{Refactor and Standardize Data}
+Entities and attributes with incorrect data types should be refactored. Standardization efforts should focus on ensuring that attributes are stored in the correct formats to make data analysis easier and more reliable.
+
+\subsection{Consolidate Redundant Entities and Attributes}
+Redundant entities and attributes should be merged or removed to simplify the data model. Consolidating overlapping entities will reduce complexity and improve overall system performance.
+
+\subsection{Implement Required Fields and Validation}
+Critical attributes should be marked as "required" to improve data completeness. Additionally, validation rules should be implemented to ensure consistent data entry, particularly for numeric values, dates, and key identifiers.
+
+\newpage

@@ -1,0 +1,124 @@
+\section{Appendices}
+\label{sec:Appendices}
+
+The appendices provide supplementary materials and references that were used throughout this documentation. These resources are essential for anyone wishing to validate the findings or extend the analysis.
+
+\subsection{Appendix 1: Data Files}
+The raw data exported from the NBS system is available in \texttt{.csv} format in the \texttt{Data} folder. These files contain all relevant columns formatted for human readability.
+
+\begin{verbatim}
+/Data/
+    |-- cr675_testorder.csv
+    |-- cr675_testdashboardtestprocedment.csv
+    |-- cr675_ifsmaterialsv3.csv
+    |-- cr675_nbsconstructionmaterialstacksstitchings.csv
+    |-- cr675_nbsifsmaterials.csv
+    |-- cr675_nbsmaterialstack.csv
+    |-- cr675_testdashboardsample.csv
+    |-- cr675_testcompounds.csv
+    |-- cr675_nbsicwproducts.csv
+    |-- cr91b_nbsrtable.csv
+    |-- cr675_testdashboardballisticsystem.csv
+    |-- cr675_nbsconstruction.csv
+    |-- cr675_testdashboardproduct.csv
+    |-- cr675_nbsfrec2rndorders.csv
+    |-- cr675_nbsstitching.csv
+    |-- cr675_nbsmaterial.csv
+    |-- cr675_testdashboardstandarddetails.csv
+    |-- cr675_testdashboardammotypedictionary.csv
+    |-- cr675_project.csv
+    |-- cr675_testdashboardgeometries.csv
+    |-- craab_nbsgrouporder.csv
+    |-- cr675_nbsmaterialstackandconstraction.csv
+    |-- cr91b_nbsprogram.csv
+    |-- cr675_testdashboardstandard.csv
+    |-- cr675_nbspreliminarytesting.csv
+    |-- cr675_nbstestdashboardbackingtypedictionary.csv
+    |-- cr675_nbstestdashboardcartridgetypedictionary.csv
+    |-- cr675_testdashboardinstitute.csv
+    |-- cr675_orderviewrd.csv
+    |-- craab_nbstooltype.csv
+    |-- cr675_nbstestdashboardpowdertypedictionary.csv
+    \-- cr675_testdashboardphotos.csv
+\end{verbatim}
+
+\subsection{Appendix 2: Inventories}
+The \texttt{Inventories} folder contains \texttt{.json} files that provide a comprehensive listing of the tables, solutions, and Power BI reports used in the NBS system. These inventories serve as an index for anyone working with the system’s data.
+
+\begin{verbatim}
+/Inventories/
+    |-- tables_inventory.json
+    |-- reports_inventory.json
+    \-- solutions_inventory.json
+\end{verbatim}
+
+\subsection{Appendix 3: Markdown Files}
+The following \texttt{.md} files available in the \texttt{Markdowns} folder contain the inventories from Appendix 2, programmatically transformed into human-readable markdown files, which can be easily exported to PDF.
+
+\begin{verbatim}
+/Markdowns/
+    |-- tables_markdown.md
+    |-- reports_markdown.md
+    \-- solutions_markdown.md
+\end{verbatim}
+
+\subsection{Appendix 4: Python Scripts}
+The Python scripts used for API connection and data collection are provided in the \texttt{Scripts} folder. These scripts facilitate data retrieval, inventory generation, and markdown conversion.
+
+\begin{verbatim}
+/Scripts/
+    |-- api_connect.py
+    |-- download_data.py
+    |-- table_inventorization.py
+    |-- solution_inventorization.py
+    |-- generate_tables_markdown.py
+    |-- generate_solutions_markdown.py
+    \-- generate_reports_markdown.py
+\end{verbatim}
+
+\subsection{Appendix 5: Entity Relationship Diagram}
+A simplified Entity Relationship Diagram (ERD) is available as a \texttt{.png} file. This diagram shows the key relationships between entities in the system, providing a visual aid for understanding the data structure.
+
+\begin{verbatim}
+/Images/
+    \-- er_diagram.png
+\end{verbatim}
+
+\newpage
+
+\subsection{Appendix 6: Glossary of Terms}
+
+\begin{small}
+    \begin{longtable}{m{5cm} | m{9cm}}
+        \textbf{Term} & \textbf{Definition} \\\hline\\
+        \textbf{Ballistic System} & A product or set of products designed for ballistic testing. \\[2em]
+        \textbf{Construction} & A combination of multiple material stacks in a specific order, often involving different stitching techniques. \\[2em]
+        \textbf{Material} & The basic ingredient of every ballistic construction. \\[2em]
+        \textbf{Material Stack} & A group of one or more layers of the same material stacked together to form part of a construction. \\[2em]
+        \textbf{Operation} & The type of stitching used to bind materials within a material stack or to join different stacks in a construction. \\[2em]
+        \textbf{Test Order} & A formal request for performing ballistic tests on a specific product or system according to predefined standards and protocols. \\[2em]
+        \textbf{V50} & A ballistic testing parameter that measures the velocity at which there is a 50\% probability that a projectile will penetrate a material. \\[2em]
+        \textbf{BFS (Backface Signature)} & The depth of deformation caused on the back face of a material when it is struck by a projectile. \\[2em]
+        \textbf{PBFS} & Probability of Backface Signature exceeding a defined threshold during ballistic testing. \\[2em]
+        \textbf{Areal Density (AD)} & A measure of the weight of a ballistic material or construction per unit area, typically expressed in kg/m². \\[2em]
+        \textbf{Power BI} & A Microsoft analytics service used to visualize and analyze the data collected from ballistic tests and create reports and dashboards. \\[2em]
+        \textbf{Dataverse} & A cloud-based data platform used to store and manage data for applications such as the NBS system. \\[2em]
+        \textbf{API} & Application Programming Interface, used for interacting with Dataverse and Power BI to retrieve data for analysis. \\[2em]
+        \textbf{Entity} & A table or database object used in Microsoft Dataverse that stores structured data (e.g., \texttt{NBS Test Order}, \texttt{NBS Material Stack}). \\[2em]
+        \textbf{Attribute} & A column in an entity that stores specific information about that entity (e.g., \texttt{Test Date}, \texttt{Projectile Type}). \\[2em]
+        \textbf{Test Protocol} & A set of predefined steps and conditions under which ballistic tests are conducted. \\[2em]
+        \textbf{Uniqueidentifier} & A data type used to represent a unique value for identifying entities (e.g., UUID). \\[2em]
+        \textbf{Lookup Field} & A reference field that allows linking one entity to another within Dataverse, helping establish relationships between data. \\[2em]
+        \textbf{Primary Key} & A unique identifier for each record in a database entity, ensuring that each record can be uniquely identified. \\[2em]
+        \textbf{Foreign Key} & A field that links one entity to another, establishing a relationship between the data stored in both entities. \\[2em]
+        \textbf{Data Completeness} & A measure of how much of the expected data is available in each attribute, often expressed as a percentage. \\[2em]
+        \textbf{Data Profiling} & The process of reviewing and analyzing data to assess its quality, including checking for missing, duplicate, or inconsistent data. \\[2em]
+        \textbf{Data Inconsistency} & Occurs when data does not follow a consistent format or structure, making it difficult to analyze or compare (e.g., different date formats in the same field). \\[2em]
+        \textbf{Data Redundancy} & The occurrence of duplicate or unnecessary data, which can complicate data storage and analysis. \\[2em]
+        \textbf{Data Validation} & The process of ensuring that data entered into a system meets predefined criteria for accuracy and consistency. \\[2em]
+        \textbf{Entity Relationship Diagram (ERD)} & A visual representation of how entities in a system relate to one another, used to understand data structure. \\[2em]
+        \textbf{CSV (Comma-Separated Values)} & A file format used for saving tabular data where each field is separated by a comma. \\[2em]
+        \textbf{Required Field} & An attribute that must contain a value in order for a record to be valid, ensuring that important data is always captured. \\[2em]
+        \textbf{Data Incompleteness} & When required or important fields in a dataset are missing values, affecting the reliability of the data. \\[2em]
+    \end{longtable}
+\end{small}
