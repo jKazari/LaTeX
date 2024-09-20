@@ -1,88 +1,131 @@
+\newcommand{\FTdir}{}
+\def\FTdir(#1,#2,#3){%
+  \FTfile(#1,{{\color{black!40!white}\faFolderOpen}\,#3})
+  (tmp.west)++(0.8em,-0.4em)node(#2){}
+  (tmp.west)++(1.5em,0)
+  ++(0,-1.3em) 
+}
+
+\newcommand{\FTfile}{}
+\def\FTfile(#1,#2){%
+  node(tmp){}
+  (#1|-tmp)++(0.6em,0)
+  node(tmp)[anchor=west,black]{\textbf{\texttt{#2}}}
+  (#1)|-(tmp.west)
+  ++(0,-1.2em) 
+}
+
+\newcommand{\FTroot}{}
+\def\FTroot{tmp.west}
+
 \section{Appendices}
 \label{sec:Appendices}
 
 The appendices provide supplementary materials and references that were used throughout this documentation. These resources are essential for anyone wishing to validate the findings or extend the analysis.
 
 \subsection{Appendix 1: Data Files}
-The raw data exported from the NBS system is available in \texttt{.csv} format in the \texttt{Data} folder. These files contain all relevant columns formatted for human readability.
+The raw data exported from the NBS system is available in \texttt{.csv} format in the \texttt{data} folder. These files contain all relevant columns formatted for human readability.
 
-\begin{verbatim}
-/Data/
-    |-- cr675_testorder.csv
-    |-- cr675_testdashboardtestprocedment.csv
-    |-- cr675_ifsmaterialsv3.csv
-    |-- cr675_nbsconstructionmaterialstacksstitchings.csv
-    |-- cr675_nbsifsmaterials.csv
-    |-- cr675_nbsmaterialstack.csv
-    |-- cr675_testdashboardsample.csv
-    |-- cr675_testcompounds.csv
-    |-- cr675_nbsicwproducts.csv
-    |-- cr91b_nbsrtable.csv
-    |-- cr675_testdashboardballisticsystem.csv
-    |-- cr675_nbsconstruction.csv
-    |-- cr675_testdashboardproduct.csv
-    |-- cr675_nbsfrec2rndorders.csv
-    |-- cr675_nbsstitching.csv
-    |-- cr675_nbsmaterial.csv
-    |-- cr675_testdashboardstandarddetails.csv
-    |-- cr675_testdashboardammotypedictionary.csv
-    |-- cr675_project.csv
-    |-- cr675_testdashboardgeometries.csv
-    |-- craab_nbsgrouporder.csv
-    |-- cr675_nbsmaterialstackandconstraction.csv
-    |-- cr91b_nbsprogram.csv
-    |-- cr675_testdashboardstandard.csv
-    |-- cr675_nbspreliminarytesting.csv
-    |-- cr675_nbstestdashboardbackingtypedictionary.csv
-    |-- cr675_nbstestdashboardcartridgetypedictionary.csv
-    |-- cr675_testdashboardinstitute.csv
-    |-- cr675_orderviewrd.csv
-    |-- craab_nbstooltype.csv
-    |-- cr675_nbstestdashboardpowdertypedictionary.csv
-    \-- cr675_testdashboardphotos.csv
-\end{verbatim}
+\begin{tikzpicture}%
+    \draw[color=black!60!white]
+    \FTdir(\FTroot,root,/){
+        \FTdir(root,data,data){
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testorder.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testdashboardtestprocedment.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_ifsmaterialsv3.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbsconstructionmaterialstacksstitchings.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbsifsmaterials.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbsmaterialstack.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testdashboardsample.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testcompounds.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbsicwproducts.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr91b\_nbsrtable.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testdashboardballisticsystem.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbsconstruction.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testdashboardproduct.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbsfrec2rndorders.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbsstitching.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbsmaterial.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testdashboardstandarddetails.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testdashboardammotypedictionary.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_project.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testdashboardgeometries.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,craab\_nbsgrouporder.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbsmaterialstackandconstraction.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr91b\_nbsprogram.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testdashboardstandard.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbspreliminarytesting.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbstestdashboardbackingtypedictionary.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbstestdashboardcartridgetypedictionary.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testdashboardinstitute.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_orderviewrd.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,craab\_nbstooltype.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_nbstestdashboardpowdertypedictionary.csv)
+            \FTfile(data,\textcolor[HTML]{8dc149}{\faFileCsv}\,cr675\_testdashboardphotos.csv)
+        }
+    };
+\end{tikzpicture}
 
 \subsection{Appendix 2: Inventories}
-The \texttt{Inventories} folder contains \texttt{.json} files that provide a comprehensive listing of the tables, solutions, and Power BI reports used in the NBS system. These inventories serve as an index for anyone working with the system’s data.
+The \texttt{inventories} folder contains \texttt{.json} files that provide a comprehensive listing of the tables, solutions, and Power BI reports used in the NBS system. These inventories serve as an index for anyone working with the system’s data.
 
-\begin{verbatim}
-/Inventories/
-    |-- tables_inventory.json
-    |-- reports_inventory.json
-    \-- solutions_inventory.json
-\end{verbatim}
+\begin{tikzpicture}%
+    \draw[color=black!60!white]
+    \FTdir(\FTroot,root,/){
+        \FTdir(root,inventories,inventories){
+            \FTfile(inventories,\textcolor[HTML]{ffcc00}{\{\}}\,tables\_inventory.json)
+            \FTfile(inventories,\textcolor[HTML]{ffcc00}{\{\}}\,reports\_inventory.json)
+            \FTfile(inventories,\textcolor[HTML]{ffcc00}{\{\}}\,solutions\_inventory.json)
+        }
+    };
+\end{tikzpicture}
 
 \subsection{Appendix 3: Markdown Files}
-The following \texttt{.md} files available in the \texttt{Markdowns} folder contain the inventories from Appendix 2, programmatically transformed into human-readable markdown files, which can be easily exported to PDF.
+The following \texttt{.md} files available in the \texttt{markdown} folder contain the inventories from Appendix 2, programmatically transformed into human-readable markdown files, which can be easily exported to PDF.
 
-\begin{verbatim}
-/Markdowns/
-    |-- tables_markdown.md
-    |-- reports_markdown.md
-    \-- solutions_markdown.md
-\end{verbatim}
+\begin{tikzpicture}%
+    \draw[color=black!60!white]
+    \FTdir(\FTroot,root,/){
+        \FTdir(root,markdown,markdown){
+            \FTfile(markdown,\textcolor[HTML]{519aba}{\faMarkdown}\,tables\_markdown.md)
+            \FTfile(markdown,\textcolor[HTML]{519aba}{\faMarkdown}\,reports\_markdown.md)
+            \FTfile(markdown,\textcolor[HTML]{519aba}{\faMarkdown}\,solutions\_markdown.md)
+        }
+    };
+\end{tikzpicture}
 
 \subsection{Appendix 4: Python Scripts}
-The Python scripts used for API connection and data collection are provided in the \texttt{Scripts} folder. These scripts facilitate data retrieval, inventory generation, and markdown conversion.
+The Python scripts used for API connection and data collection are provided in the \texttt{scripts} folder. These scripts facilitate data retrieval, inventory generation, and markdown conversion.
 
-\begin{verbatim}
-/Scripts/
-    |-- api_connect.py
-    |-- download_data.py
-    |-- table_inventorization.py
-    |-- solution_inventorization.py
-    |-- generate_tables_markdown.py
-    |-- generate_solutions_markdown.py
-    \-- generate_reports_markdown.py
-\end{verbatim}
+\begin{tikzpicture}%
+    \draw[color=black!60!white]
+    \FTdir(\FTroot,root,/){
+        \FTdir(root,scripts,scripts){
+            \FTfile(scripts,\textcolor[HTML]{519aba}{\faPython}\,api\_connect.py)
+            \FTfile(scripts,\textcolor[HTML]{519aba}{\faPython}\,download\_data.py)
+            \FTfile(scripts,\textcolor[HTML]{519aba}{\faPython}\,table\_inventorization.py)
+            \FTfile(scripts,\textcolor[HTML]{519aba}{\faPython}\,solution\_inventorization.py)
+            \FTfile(scripts,\textcolor[HTML]{519aba}{\faPython}\,generate\_tables\_markdown.py)
+            \FTfile(scripts,\textcolor[HTML]{519aba}{\faPython}\,generate\_solutions\_markdown.py)
+            \FTfile(scripts,\textcolor[HTML]{519aba}{\faPython}\,generate\_reports\_markdown.py)
+        }
+    };
+\end{tikzpicture}
 
 \subsection{Appendix 5: Entity Relationship Diagram}
-A simplified Entity Relationship Diagram (ERD) is available as a \texttt{.png} file. This diagram shows the key relationships between entities in the system, providing a visual aid for understanding the data structure.
+A simplified Entity Relationship Diagram (ERD) is available in the \texttt{diagram} folder. This diagram shows the key relationships between tables in the system, providing a visual aid for understanding the data structure. It's available in \texttt{.png},\texttt{.svg} and \texttt{.pdf} formats as well as the original editable \texttt{.drawio} file.
 
-\begin{verbatim}
-/Images/
-    \-- er_diagram.png
-\end{verbatim}
+\begin{tikzpicture}%
+    \draw[color=black!60!white]
+    \FTdir(\FTroot,root,/){
+        \FTdir(root,diagram,diagram){
+            \FTfile(diagram,\textcolor[HTML]{f08705}{\faPen}\,er\_diagram.drawio)
+            \FTfile(diagram,\textcolor[HTML]{cc3e44}{\faFilePdf}\:\:er\_diagram.pdf)
+            \FTfile(diagram,\textcolor[HTML]{a074c4}{\faFileImage}\:\:er\_diagram.png)
+            \FTfile(diagram,\textcolor[HTML]{a074c4}{\faShapes}\,er\_diagram.svg)
+        }
+    };
+\end{tikzpicture}
 
 \newpage
 
@@ -99,7 +142,7 @@ A simplified Entity Relationship Diagram (ERD) is available as a \texttt{.png} f
         \textbf{Test Order} & A formal request for performing ballistic tests on a specific product or system according to predefined standards and protocols. \\[2em]
         \textbf{V50} & A ballistic testing parameter that measures the velocity at which there is a 50\% probability that a projectile will penetrate a material. \\[2em]
         \textbf{BFS (Backface Signature)} & The depth of deformation caused on the back face of a material when it is struck by a projectile. \\[2em]
-        \textbf{PBFS} & Probability of Backface Signature exceeding a defined threshold during ballistic testing. \\[2em]
+        \textbf{PBFS} & Perforation-Backface Signature. Interchangable with BFS \\[2em]
         \textbf{Areal Density (AD)} & A measure of the weight of a ballistic material or construction per unit area, typically expressed in kg/m². \\[2em]
         \textbf{Power BI} & A Microsoft analytics service used to visualize and analyze the data collected from ballistic tests and create reports and dashboards. \\[2em]
         \textbf{Dataverse} & A cloud-based data platform used to store and manage data for applications such as the NBS system. \\[2em]
@@ -107,18 +150,18 @@ A simplified Entity Relationship Diagram (ERD) is available as a \texttt{.png} f
         \textbf{Entity} & A table or database object used in Microsoft Dataverse that stores structured data (e.g., \texttt{NBS Test Order}, \texttt{NBS Material Stack}). \\[2em]
         \textbf{Attribute} & A column in an entity that stores specific information about that entity (e.g., \texttt{Test Date}, \texttt{Projectile Type}). \\[2em]
         \textbf{Test Protocol} & A set of predefined steps and conditions under which ballistic tests are conducted. \\[2em]
-        \textbf{Uniqueidentifier} & A data type used to represent a unique value for identifying entities (e.g., UUID). \\[2em]
-        \textbf{Lookup Field} & A reference field that allows linking one entity to another within Dataverse, helping establish relationships between data. \\[2em]
-        \textbf{Primary Key} & A unique identifier for each record in a database entity, ensuring that each record can be uniquely identified. \\[2em]
-        \textbf{Foreign Key} & A field that links one entity to another, establishing a relationship between the data stored in both entities. \\[2em]
-        \textbf{Data Completeness} & A measure of how much of the expected data is available in each attribute, often expressed as a percentage. \\[2em]
+        \textbf{Uniqueidentifier} & A data type used to represent a unique value for identifying tables (e.g., UUID). \\[2em]
+        \textbf{Lookup Field} & A reference field that allows linking one table to another within Dataverse, helping establish relationships between data. \\[2em]
+        \textbf{Primary Key} & A unique identifier for each record in a database table, ensuring that each record can be uniquely identified. \\[2em]
+        \textbf{Foreign Key} & A field that links one table to another, establishing a relationship between the data stored in both tables. \\[2em]
+        \textbf{Data Completeness} & A measure of how much of the expected data is available in each column, often expressed as a percentage. \\[2em]
         \textbf{Data Profiling} & The process of reviewing and analyzing data to assess its quality, including checking for missing, duplicate, or inconsistent data. \\[2em]
         \textbf{Data Inconsistency} & Occurs when data does not follow a consistent format or structure, making it difficult to analyze or compare (e.g., different date formats in the same field). \\[2em]
         \textbf{Data Redundancy} & The occurrence of duplicate or unnecessary data, which can complicate data storage and analysis. \\[2em]
         \textbf{Data Validation} & The process of ensuring that data entered into a system meets predefined criteria for accuracy and consistency. \\[2em]
         \textbf{Entity Relationship Diagram (ERD)} & A visual representation of how entities in a system relate to one another, used to understand data structure. \\[2em]
         \textbf{CSV (Comma-Separated Values)} & A file format used for saving tabular data where each field is separated by a comma. \\[2em]
-        \textbf{Required Field} & An attribute that must contain a value in order for a record to be valid, ensuring that important data is always captured. \\[2em]
+        \textbf{Required Field} & A column that must contain a value in order for a record to be valid, ensuring that important data is always captured. \\[2em]
         \textbf{Data Incompleteness} & When required or important fields in a dataset are missing values, affecting the reliability of the data. \\[2em]
     \end{longtable}
 \end{small}

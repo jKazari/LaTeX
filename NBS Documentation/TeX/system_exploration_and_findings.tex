@@ -1,30 +1,28 @@
 \section{System Exploration and Findings}
 
-This section summarizes the exploration process, focusing on understanding the structure, entities, and solutions used in the NBS system.
+This section summarizes the exploration process, focusing on understanding the structure, tables, and solutions used in the NBS system.
 
 \subsection{Overview}
 
-To fully understand the current state of the system, an exploration of its structure, components, and data was conducted. This section provides an in-depth look at the findings from the exploration, focusing on entities, solutions, and Power BI reports that make up the system.
+To fully understand the current state of the system, an exploration of its structure, components, and data was conducted. This section provides an in-depth look at the findings from the exploration, focusing on tables, solutions, and Power BI reports that make up the system.
 
-The exploration began with an analysis of entities within NBS. The entities were examined to understand their structure, the relationships between them, and the quality of the data they contain. Additionally, the system's solutions were reviewed and listed.
+The exploration began with an analysis of tables within NBS. They were examined to understand their structure, the relationships between them, and the quality of the data they contain. Additionally, the system's solutions were reviewed and listed.
 
-\newpage
+Furthermore, the exploration included a review of the Power BI reports used to visualize the data. Along with tables and solutions, these reports were also comprehensively inventorized.
 
-Furthermore, the exploration included a review of the Power BI reports used to visualize the data. Along with entities and solutions, these reports were also comprehensively inventorized.
+This section includes a detailed inventory of the tables, solutions, and reports. These findings serve as the foundation for the subsequent analysis, providing a clear picture of the NBS components.
 
-This section includes a detailed inventory of the entities, solutions, and reports. These findings serve as the foundation for the subsequent analysis, providing a clear picture of the NBS components.
+\subsection{Tables}
 
-\subsection{Entities}
+The tables used in the NBS system are referred to as "entities." In the Microsoft Dataverse structure, each entity has a logical name (the actual name of the entity) as well as a display name, which is user-friendly and displayed in the application frontend.
 
-The tables used in the NBS system are referred to as "entities." In the Microsoft Dataverse structure, each entity has a logical name—the actual name of the entity—as well as a display name, which is user-friendly and displayed in the application frontend.
+While exploring the system, it appeared that tables related to NBS often start with one of the following prefixes: \texttt{cr675\_}, \texttt{cr91b\_}, or \texttt{craab\_}. As the Microsoft Dataverse API returns a list of all tables, these prefixes served as flags when identifying which tables could be related to NBS. This approach narrowed down the search from hundreds of tables to several dozen.
 
-While exploring the system, it appeared that entities related to NBS often start with one of the following prefixes: \texttt{cr675\_}, \texttt{cr91b\_}, or \texttt{craab\_}. As the Microsoft Dataverse API returns a list of all entities, these prefixes served as flags when identifying which entities could be related to NBS. This approach narrowed down the search from hundreds of entities to several dozen.
-
-Another indication of which entities were in use was the \texttt{Data Analyzer} Power BI report.
+Another indication of which tables were in use was the \texttt{Data Analyzer} Power BI report.
 
 \newpage
 
-\subsubsection{List of Entities}
+\subsubsection{List of Tables}
 
 This is a list of tables used by NBS. The end user will probably recognize the tables by their display name; however, when programmatically exploring the data, the logical name is used to identify tables.
 
@@ -68,32 +66,28 @@ This is a list of tables used by NBS. The end user will probably recognize the t
 
 \subsubsection{Entity Relationship Diagram}
 
-This is the Entity Relationship Diagram of the main entities used in NBS. It provides a clear picture of the relationships between entities and can serve as a suggestion for which entities should be merged while preparing data for analysis.
+This is the Entity Relationship Diagram of the main tables used in NBS. It provides a clear picture of the relationships between tables and can serve as a suggestion for which tables should be merged while preparing data for analysis.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\textwidth]{Images/er_diagram.png}
+\includegraphics[width=\textwidth]{PDFs/er_diagram.pdf}
 \end{figure}
 
-\textbf{Legend:} \\
-Colors used in the diagram are used for logical grouping of entities:
+The diagram uses Barker's Notation for entity relationships. For reference see \href{https://ece.uprm.edu/~icom5047/documents/barkers-erd-notation.pdf}{Barker's ERD Notation}
+
+Colors used in the diagram are used for logical grouping of tables:
 \begin{itemize}
-    \item Entities related to materials / constructions are highlighted in red.
-    \item Entities related to tests are highlighted in green.
-    \item Entities which serve as dictionaries / indexes are highlighted in blue (these are the first ones to be merged when doing data preparation).
-    \item Entities which are useless / obsolete are highlighted in black.
+    \item Tables related to \textcolor[HTML]{cc3e44}{materials/constructions} are highlighted in \textcolor[HTML]{cc3e44}{red}.
+    \item Tables related to \textcolor[HTML]{8dc149}{tests} are highlighted in \textcolor[HTML]{8dc149}{green}.
+    \item Tables which serve as \textcolor[HTML]{519aba}{dictionaries/indexes} are highlighted in \textcolor[HTML]{519aba}{blue} (these are the first ones to be merged when doing data preparation).
+    \item Tables which are \textcolor[HTML]{808080}{useless/obsolete} are highlighted in \textcolor[HTML]{808080}{gray}.
 \end{itemize}
 
-Arrows represent the type of relationship:
-\begin{itemize}
-    \item $\longleftarrow$ represents a \texttt{one to many} relationship.
-    \item $\longrightarrow$ represents a \texttt{many to one} relationship.
-    \item $\longleftrightarrow$ represents a \texttt{many to many} relationship.
-\end{itemize}
 
-\subsubsection{Detailed Inventory of Entities}
 
-This section contains a detailed inventory of tables along with their row and column counts, relationships with other tables, and a list of their columns. To avoid cluttering the main document, I have chosen to show only columns with over 50\% non-null values. The full inventory is available in the \hyperref[Appendices]{Appendices} section in the form of a \texttt{.json} file, as well as a \texttt{.pdf} and its markdown \texttt{.md} source file.
+\subsubsection{Detailed Inventory of Tables}
+
+This section contains a detailed inventory of tables along with their row and column counts, relationships with other tables, and a list of their columns. To avoid cluttering the main document, I have chosen to show only columns with over 50\% non-null values. The full inventory is available in the \hyperref[sec:Appendices]{Appendices} section in the form of a \texttt{.json} file, as well as a \texttt{.pdf} and its markdown \texttt{.md} source file.
 
 \includepdf[pages=-]{PDFs/tables_markdown.pdf}
 

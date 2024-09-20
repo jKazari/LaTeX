@@ -1,9 +1,9 @@
 \section{Recommendations}
 
 \subsection{Continue Data Profiling}
-Data profiling should be an ongoing process to identify and address issues across all entities. Each table should be inspected individually, and issues should be noted. For example, the \texttt{tables\_inventory.json} file can be extended with detailed issue summaries for each entity. Example:
+Data profiling should be an ongoing process to identify and address issues across all tables. Each table should be inspected individually, and issues should be noted. For example, the \texttt{tables\_inventory.json} file can be extended with detailed issue summaries for each table. Example:
 
-\begin{verbatim}
+\begin{lstlisting}[language=json]
 [
     {
         "display-name": "NBS Test Order",
@@ -45,7 +45,7 @@ Data profiling should be an ongoing process to identify and address issues acros
                     // More issues...
                 ]
             }
-            // More attributes... 
+            // More columns... 
         ],
         "relationships": [
             {
@@ -58,20 +58,29 @@ Data profiling should be an ongoing process to identify and address issues acros
             // More relationships...
         ]
     }
-    // More entities...
+    // More tables...
 ]
-\end{verbatim}
+\end{lstlisting}
 
 \subsection{Migrate NBS System from Default Environment}
 The NBS system should be migrated from the \texttt{NFM Group Def} environment to the dedicated \texttt{NFM Group NBS DEV} environment. This migration will improve data management, security, and scalability, ensuring a more stable and efficient system.
 
 \subsection{Refactor and Standardize Data}
-Entities and attributes with incorrect data types should be refactored. Standardization efforts should focus on ensuring that attributes are stored in the correct formats to make data analysis easier and more reliable.
+Tables and columns with incorrect data types should be refactored. Standardization efforts should focus on ensuring that columns are stored in the correct formats to make data analysis easier and more reliable.
 
-\subsection{Consolidate Redundant Entities and Attributes}
-Redundant entities and attributes should be merged or removed to simplify the data model. Consolidating overlapping entities will reduce complexity and improve overall system performance.
+\subsection{Consolidate Redundant Tables and Columns}
+Redundant tables and columns should be merged or removed to simplify the data model. Consolidating overlapping tables will reduce complexity and improve overall system performance.
 
 \subsection{Implement Required Fields and Validation}
-Critical attributes should be marked as "required" to improve data completeness. Additionally, validation rules should be implemented to ensure consistent data entry, particularly for numeric values, dates, and key identifiers.
+Critical columns should be marked as "required" to improve data completeness. Additionally, validation rules should be implemented to ensure consistent data entry, particularly for numeric values, dates, and key identifiers.
+
+\subsection{Remove Unused Input Fields}
+Input fields which are not in use should be removed as they don't contribute to the system. It is recommended to conduct an audit of all current input fields to identify which ones are not in use, and to then remove them. This will not only clean up the user interface but also improve overall system performance by reducing redundant metadata in the database. 
+
+\subsection{Clean Mostly Filled Dictionaries}
+Many dictionaries in the system, such as the ones used for threats, clients or ammunition, are mostly filled, but they suffer from inconsistent or incomplete data entries. These dictionaries should be reviewed and cleaned. Once cleaned, implement restrictions on who can add new entries to these dictionaries. Additionally, implementing strict data validation rules during entry is recommended.
+
+\subsection{Use External Registers Where Possible}
+Where applicable, external registers or reference data should be used to avoid data redundancy. For example, the project list or other table registers that are externally maintained can be linked directly to NBS. This will improve the data's reliability and consistency.
 
 \newpage

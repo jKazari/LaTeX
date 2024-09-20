@@ -6,7 +6,7 @@ As part of the NBS system exploration, a comprehensive analysis of the data stor
 
 The data has been collected using the Dataverse Web API as well as the Power BI Web API. I have created a Python script, \texttt{api\_connect.py}, which consists of a \texttt{DataverseConnector} class as well as a \texttt{connect\_to\_powerbi} function. The script handles the connection to APIs and user authentication. For more details on this script, refer to the \hyperref[sec:Appendices]{Appendices}. The code is well documented and commented.
 
-The data for each entity has been saved to \texttt{.csv} files, which are available in the \hyperref[sec:Appendices]{Appendices}. These files serve as the primary dataset for the analysis conducted in this document.
+The data for each table has been saved to \texttt{.csv} files, which are available in the \hyperref[sec:Appendices]{Appendices}. These files serve as the primary dataset for the analysis conducted in this document.
 
 ...
 
@@ -14,19 +14,19 @@ The data for each entity has been saved to \texttt{.csv} files, which are availa
 
 The overall data quality of the whole dataset is very poor. The data cleaning and preparation processes for any analysis are tedious and time-consuming due to a number of issues. This section gives an overview of common issues found while exploring and analyzing the NBS data.
 
-\subsubsection{Nondescriptive Logical Attribute Names}
-Many attributes have unclear or incorrect logical names, making it difficult to understand their purpose. A common issue is the use of attribute names ending in \texttt{...id} that store names, not unique IDs as expected.
+\subsubsection{Nondescriptive Logical Column Names}
+Many columns have unclear or incorrect logical names, making it difficult to understand their purpose. A common issue is the use of column names ending in \texttt{...id} that store names, not unique IDs as expected.
 
 \textbf{Example}\\
-The \texttt{cr675\_testorder} entity has an attribute \texttt{cr91b\_depthofpenetrationinmm}, which stores boolean values (\texttt{True}/\texttt{False}) instead of numeric data. Upon investigation, this attribute was found to indicate whether the test order was for hard or soft ballistics. A more appropriate name would be \texttt{cr91b\_ishardballistics}.
+The \texttt{cr675\_testorder} table has a column \texttt{cr91b\_depthofpenetrationinmm}, which stores boolean values (\texttt{True}/\texttt{False}) instead of numeric data. Upon investigation, this column was found to indicate whether the test order was for hard or soft ballistics. A more appropriate name would be \texttt{cr91b\_ishardballistics}.
 
 \newpage
 
-\subsubsection{Inconsistent Attribute Formats}
-Most categorical attributes suffer from inconsistent formats, making analysis difficult or impossible.
+\subsubsection{Inconsistent Column Formats}
+Most categorical columns suffer from inconsistent formats, making analysis difficult or impossible.
 
 \textbf{Example}\\
-The \texttt{cr675\_testdashboardammotypedictionary} entity contains a \texttt{cr675\_bulletcalliber} attribute, which is of \texttt{string} type. Example values include:
+The \texttt{cr675\_testdashboardammotypedictionary} table contains a \texttt{cr675\_bulletcalliber} column, which is of \texttt{string} type. Example values include:
 
 \begin{table}[h!]
 	\centering
@@ -68,30 +68,30 @@ For data to be useful and ready for analysis, it needs to be standardized and co
 	\end{tabular}
 \end{table}
 
-\subsubsection{Wrong Attribute Types}
-Many attributes are stored as strings when they should contain uniform numeric values, further complicating analysis.
+\subsubsection{Wrong Column Types}
+Many columns are stored as strings when they should contain uniform numeric values, further complicating analysis.
 
 \newpage
 
 \subsubsection{Duplicate Information}
-Several attributes contain redundant information. In some cases, multiple columns needed to be merged to obtain meaningful data during the exploration process.
+Several columns contain redundant information. In some cases, multiple columns needed to be merged to obtain meaningful data during the exploration process.
 
 \textbf{Example}\\
-Using the same entity as above, it contains attributes \texttt{cr675\_produceraccount}, \texttt{cr675\_name}, and \texttt{cr675\_bulletnamewithproducername}. The last one is just a join of the two previous attributes and is redundant. Moreover, most of the \texttt{cr675\_produceraccount} attribute is empty, so \texttt{cr675\_bulletnamewithproducername} contains just a duplicate of \texttt{cr675\_name} with a colon appended.
+Using the same table as above, it contains columns \texttt{cr675\_produceraccount}, \texttt{cr675\_name}, and \texttt{cr675\_bulletnamewithproducername}. The last one is just a join of the two previous columns and is redundant. Moreover, most of the \texttt{cr675\_produceraccount} column is empty, so \texttt{cr675\_bulletnamewithproducername} contains just a duplicate of \texttt{cr675\_name} with a colon appended.
 
-\subsubsection{High Percentage of Empty Attributes}
-A significant portion of the attributes are largely empty, with minimal data recorded. This indicates a lack of enforcement of data entry standards and contributes to the overall data incompleteness.
+\subsubsection{High Percentage of Empty Columns}
+A significant portion of the columns are largely empty, with minimal data recorded. This indicates a lack of enforcement of data entry standards and contributes to the overall data incompleteness.
 
 \textbf{Example}\\
-In the \texttt{cr675\_testdashboardprocedement} entity, 13 custom attributes have less than 50\% data completeness, with six of these attributes entirely empty.
+In the \texttt{cr675\_testdashboardprocedement} etable, 13 custom columns have less than 50\% data completeness, with six of these columns entirely empty.
 
 \subsubsection{Lack of Required Fields}
-Few attributes are marked as "required," resulting in significant data gaps. This exacerbates the incompleteness of the dataset and reduces its overall reliability.
+Few columns are marked as "required," resulting in significant data gaps. This exacerbates the incompleteness of the dataset and reduces its overall reliability.
 
-\subsubsection{Redundant Entities and Attributes}
-Some entities and attributes appear to be redundant, either due to duplication or subsetting of data from other entities. This redundancy adds unnecessary complexity to the data model.
+\subsubsection{Redundant Tables and Columns}
+Some tables and columns appear to be redundant, either due to duplication or subsetting of data from other tables. This redundancy adds unnecessary complexity to the data model.
 
 \subsection{Summary}
-The data is mostly unusable, even for data cleaning. The lack of enforcement of data input results in incomplete datasets. The lack of standardization of formatting and attribute types leads to data being mostly stored in text, often with comments and additional redundant information, which is not ideal for analysis.
+The data is mostly unusable, even for data cleaning. The lack of enforcement of data input results in incomplete datasets. The lack of standardization of formatting and column types leads to data being mostly stored in text, often with comments and additional redundant information, which is not ideal for analysis.
 
-It seems that these entities are being used by the engineers like Excel spreadsheets when they should be treated as datasets. It is mostly useless to collect data in this manner because it cannot be analyzed easily, or the cleaning process requires verifying every row and cross-referencing documentation or consulting an expert on domain knowledge.
+It seems that these tables are being used by the engineers like Excel spreadsheets when they should be treated as datasets. It is mostly useless to collect data in this manner because it cannot be analyzed easily, or the cleaning process requires verifying every row and cross-referencing documentation or consulting an expert on domain knowledge.
