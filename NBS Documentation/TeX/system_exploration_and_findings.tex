@@ -4,7 +4,7 @@ This section summarizes the exploration process, focusing on understanding the s
 
 \subsection{Overview}
 
-To fully understand the current state of the system, an exploration of its structure, components, and data was conducted. This section provides an in-depth look at the findings from the exploration, focusing on tables, solutions, and Power BI reports that make up the system.
+To understand the current state of the system, its structure, components, and data were thoroughly explored. This section presents the findings from this exploration, focusing on the tables, solutions, and Power BI reports that form the core of the NBS system.
 
 The exploration began with an analysis of tables within NBS. They were examined to understand their structure, the relationships between them, and the quality of the data they contain. Additionally, the system's solutions were reviewed and listed.
 
@@ -14,7 +14,7 @@ This section includes a detailed inventory of the tables, solutions, and reports
 
 \subsection{Tables}
 
-The tables used in the NBS system are referred to as "entities." In the Microsoft Dataverse structure, each entity has a logical name (the actual name of the entity) as well as a display name, which is user-friendly and displayed in the application frontend.
+The tables in the NBS system are referred to as "entities." In the Microsoft Dataverse structure, each entity has a logical name (its technical identifier) and a display name, which is more user-friendly and shown in the application's frontend.
 
 While exploring the system, it appeared that tables related to NBS often start with one of the following prefixes: \texttt{cr675\_}, \texttt{cr91b\_}, or \texttt{craab\_}. As the Microsoft Dataverse API returns a list of all tables, these prefixes served as flags when identifying which tables could be related to NBS. This approach narrowed down the search from hundreds of tables to several dozen.
 
@@ -24,7 +24,7 @@ Another indication of which tables were in use was the \texttt{Data Analyzer} Po
 
 \subsubsection{List of Tables}
 
-This is a list of tables used by NBS. The end user will probably recognize the tables by their display name; however, when programmatically exploring the data, the logical name is used to identify tables.
+This is a list of tables used by NBS. The end user typically recognizes tables by their display names, while the logical names are used for programmatic interactions with the system.
 
 \begin{footnotesize}
 	\begin{tabularx}{\textwidth}{l|l}
@@ -66,7 +66,7 @@ This is a list of tables used by NBS. The end user will probably recognize the t
 
 \subsubsection{Entity Relationship Diagram}
 
-This is the Entity Relationship Diagram of the main tables used in NBS. It provides a clear picture of the relationships between tables and can serve as a suggestion for which tables should be merged while preparing data for analysis.
+This is the Entity Relationship Diagram (ERD) of the main tables used in NBS. It provides an overview of the relationships between tables and offers suggestions for potential table merging during data preparation.
 
 \begin{figure}[h!]
 \centering
@@ -87,24 +87,24 @@ Colors used in the diagram are used for logical grouping of tables:
 
 \subsubsection{Detailed Inventory of Tables}
 
-This section contains a detailed inventory of tables along with their row and column counts, relationships with other tables, and a list of their columns. To avoid cluttering the main document, I have chosen to show only columns with over 50\% non-null values. The full inventory is available in the \hyperref[sec:Appendices]{Appendices} section in the form of a \texttt{.json} file, as well as a \texttt{.pdf} and its markdown \texttt{.md} source file.
+This section contains a detailed inventory of tables, including row and column counts, table relationships, and a list of columns. The full inventory is available in the \hyperref[sec:Appendices]{Appendices} section in multiple formats (.json, .pdf, and .md).
 
 \includepdf[pages=-]{PDFs/tables_markdown.pdf}
 
 \subsection{Solutions}
 
-A \textbf{solution} is a logical container for components such as tables, apps, dashboards, and other resources that are related to a specific process or system. Solutions play a key role in organizing and managing system components, particularly when moving them between environments.
+A \textbf{solution} is a logical container for components such as tables, apps, dashboards, and other resources related to a specific process or system. Solutions are crucial for organizing and managing system components, especially when moving them between environments.
 
 As described by Microsoft:
 
 \begin{quote}
-	Solutions are used to transport apps and components from one environment to another or to apply a set of customizations to existing apps. A solution can contain one or more apps as well as other components such as site maps, tables, processes, web resources, choices, flows, and more. \\
+	\textit{Solutions are used to transport apps and components from one environment to another or to apply a set of customizations to existing apps. A solution can contain one or more apps as well as other components such as site maps, tables, processes, web resources, choices, flows, and more.} \\
 	\href{https://learn.microsoft.com/en-us/power-apps/maker/data-platform/solutions-overview}{Source}
 \end{quote}
 
-In the context of the NBS system, it was critical to identify which solutions were associated with the system. This information will be essential for migrating the NBS system from the current \texttt{NFM Group Def} environment to the \texttt{NFM Group NBS DEV} environment. Properly identifying and organizing these solutions ensures that all related components—tables, apps, and workflows—are migrated seamlessly.
+In the context of the NBS system, identifying associated solutions is essential for migrating the system from the current NFM Group Def environment to the NFM Group NBS DEV environment. Proper identification and organization of these solutions will ensure seamless migration of all related components, including tables, apps, and workflows.
 
-Each solution has a \textbf{display name} (used for easy identification) and a \textbf{unique name}, which serves as an identifier for system-level operations. This distinction helps ensure that the correct solutions are managed during customization or migration efforts.
+Each solution has a \textbf{display name} for easy identification and a \textbf{unique name}, which serves as a system-level identifier. This distinction is crucial for managing solutions during customization and migration processes.
 
 \subsubsection{List of Solutions Related to NBS}
 
@@ -147,9 +147,7 @@ Below is a comprehensive inventarization of solutions along with their component
 
 \subsection{Reports}
 
-One of the tasks for this project was to review all of the Power BI Reports used in the \texttt{NBS} Workspace. Each report has been reviewed and described in detail.
-
-Here is a comprehensive inventory of all the reports in the \texttt{NBS} Workspace. Each report contains a description, a list of pages available, filters available, graphs used in the report, and tables used by the report.
+A key task in this project was to conduct a detailed review of all Power BI reports used in the NBS Workspace.
 
 \subsubsection{List of Reports Related to NBS}
 
@@ -170,6 +168,6 @@ Here is a comprehensive inventory of all the reports in the \texttt{NBS} Workspa
 
 \subsubsection{Inventory of Reports Related to NBS}
 
-This section includes a detailed inventory of all reports related to NBS, including descriptions, pages, filters, and data sources for each report.
+Below is a comprehensive inventory of all reports in the NBS Workspace. Each report includes a description, a list of available pages, filters, graphs, and the tables it utilizes.
 
 \includepdf[pages=-]{PDFs/reports_markdown.pdf}

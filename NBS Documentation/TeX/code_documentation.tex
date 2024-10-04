@@ -3,7 +3,7 @@
 
 \subsection{Scripts Overview}
 
-During the project I wrote a collection of Python scripts which I used to automate data collection, processing, working with data as well as even generate parts of documentation. I categorized them into two groups: \textbf{Data Collection and Processing} as well as \textbf{Markdown Generation}.
+A collection of Python scripts was developed during this project to automate data collection, processing, and management, as well as to generate parts of the documentation. These scripts are categorized into two groups: \textbf{Data Collection and Processing} as well as \textbf{Markdown Generation}.
 
 \subsection{Data Collection and Processing Scripts}
 
@@ -22,7 +22,7 @@ services, manage authentication, and handle data requests.
 
 \textbf{Dependencies}
 
-Before trying to use the script, ensure that the following Python packages are installed by running
+Before using the script, ensure that the following Python packages are installed by running
 \begin{verbatim}
 	pip install msal requests pandas
 \end{verbatim}
@@ -70,14 +70,12 @@ To run the script, simply execute it as is, however if you need to modify the li
 
 \subsection{Markdown Generation Scripts}
 
-These are the helper scripts I used to generate parts of this documentation from json inventories. They are not crucial to understand but I documented them either way.
-
-Each script follows a similar pattern
+These helper scripts were used to generate parts of this documentation from JSON inventories. While they are not essential to understanding the core processes, they have been documented for reference. Each script follows a similar pattern:
 \begin{enumerate}
 	\item Read JSON data
 	\item Generate raw Markdown
-	\item Save Markdown as .md file
+	\item Save Markdown as a .md file
 \end{enumerate}
 
 \subsection{Note}
-Each of these scripts are documented in the form of Python Docstrings as well as comments within their respective files.
+Each of these scripts is documented using Python Docstrings and inline comments within their respective files.

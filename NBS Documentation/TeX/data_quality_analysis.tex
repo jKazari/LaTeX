@@ -1,21 +1,25 @@
 \section{Data Quality Analysis}
 
-As part of the NBS system exploration, a comprehensive analysis of the data stored in the system was conducted. This section highlights the major data quality issues identified during the analysis, including data incompleteness, inconsistencies, and duplicates. These issues present significant challenges to the system’s reliability and make data analysis difficult and time-consuming.
+During the exploration of the NBS system, a comprehensive analysis of the stored data was conducted. This section outlines the major data quality issues identified, including data incompleteness, inconsistencies, and duplicates. These issues significantly affect the system’s reliability, making data analysis both difficult and time-consuming.
 
 \subsection{Data Collection and Methodology}
 
-The data has been collected using the Dataverse Web API as well as the Power BI Web API. I have created a Python script, \texttt{api\_connect.py}, which consists of a \texttt{DataverseConnector} class as well as a \texttt{connect\_to\_powerbi} function. The script handles the connection to APIs and user authentication. For more details on this script, refer to the \hyperref[sec:Appendices]{Appendices}. The code is well documented and commented.
+Data was collected using both the Dataverse Web API and the Power BI Web API. A Python script, \texttt{api\_connect.py}, was developed, which includes a \texttt{DataverseConnector} class and a \texttt{connect\_to\_powerbi} function. The script manages API connections and user authentication. More detailed information on the script can be found in the \hyperref[sec:Appendices]{Appendices} and \hyperref[sec:CodeDocumentation]{Code Documentation}. The code itself is also thoroughly documented with Docstrings and comments.
 
-The data for each table has been saved to \texttt{.csv} files, which are available in the \hyperref[sec:Appendices]{Appendices}. These files serve as the primary dataset for the analysis conducted in this document.
+Data from each table was saved as \texttt{.csv} files, available in the \hyperref[sec:Appendices]{Appendices}. These files serve as the primary dataset for the analysis in this document.
 
-...
+Following data collection, the exploration and analysis of NBS began. Using data extracted from the API, the structure of the entities and their relationships were explored and visualized using an ER Diagram. This provided insights into which tables were essential, which served as dictionaries, and which contained observational data.
+
+Subsequently, the collected data was analyzed for quality and consistency, focusing on missing values, duplicated records, and formatting issues. Data from multiple tables was aggregated into larger datasets to provide a more comprehensive view. Each table is thoroughly documented.
+
+The analysis was primarily conducted using Python, utilizing libraries such as pandas, numpy, matplotlib, and seaborn. Basic statistical methods were employed to gain a deeper understanding of the data.
 
 \subsection{Data Quality Issues}
 
-The overall data quality of the whole dataset is very poor. The data cleaning and preparation processes for any analysis are tedious and time-consuming due to a number of issues. This section gives an overview of common issues found while exploring and analyzing the NBS data.
+The overall quality of the dataset is poor, making data cleaning and preparation for analysis tedious and time-consuming. This section provides an overview of the common issues encountered during the exploration and analysis of the NBS data.
 
 \subsubsection{Nondescriptive Logical Column Names}
-Many columns have unclear or incorrect logical names, making it difficult to understand their purpose. A common issue is the use of column names ending in \texttt{...id} that store names, not unique IDs as expected.
+Many columns have unclear or incorrect logical names, making it difficult to understand their purpose. A common issue is columns ending in \texttt{...id} that store names instead of unique IDs, as expected.
 
 \textbf{Example}\\
 The \texttt{cr675\_testorder} table has a column \texttt{cr91b\_depthofpenetrationinmm}, which stores boolean values (\texttt{True}/\texttt{False}) instead of numeric data. Upon investigation, this column was found to indicate whether the test order was for hard or soft ballistics. A more appropriate name would be \texttt{cr91b\_ishardballistics}.
@@ -92,6 +96,6 @@ Few columns are marked as "required," resulting in significant data gaps. This e
 Some tables and columns appear to be redundant, either due to duplication or subsetting of data from other tables. This redundancy adds unnecessary complexity to the data model.
 
 \subsection{Summary}
-The data is mostly unusable, even for data cleaning. The lack of enforcement of data input results in incomplete datasets. The lack of standardization of formatting and column types leads to data being mostly stored in text, often with comments and additional redundant information, which is not ideal for analysis.
+The data is largely unusable, even for cleaning. Poor data input enforcement has resulted in incomplete datasets, and the lack of formatting and column type standardization has left most data stored as text, often with redundant or unstructured information, complicating analysis.
 
-It seems that these tables are being used by the engineers like Excel spreadsheets when they should be treated as datasets. It is mostly useless to collect data in this manner because it cannot be analyzed easily, or the cleaning process requires verifying every row and cross-referencing documentation or consulting an expert on domain knowledge.
+These tables appear to be used by engineers as if they were Excel spreadsheets, rather than being treated as structured datasets. Collecting data in this manner significantly hampers analysis, as it often requires laborious data cleaning, including verifying individual rows, cross-referencing documentation, or consulting domain experts.
