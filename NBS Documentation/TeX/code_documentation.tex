@@ -1,0 +1,83 @@
+\section{Code Documentation}
+\label{sec:CodeDocumentation}
+
+\subsection{Scripts Overview}
+
+During the project I wrote a collection of Python scripts which I used to automate data collection, processing, working with data as well as even generate parts of documentation. I categorized them into two groups: \textbf{Data Collection and Processing} as well as \textbf{Markdown Generation}.
+
+\subsection{Data Collection and Processing Scripts}
+
+\subsubsection{\texttt{api\_connect.py}}
+
+This Python script provides functionalities to connect and retrieve data from
+Microsoft Dataverse and Power BI using the OData API and MSAL (Microsoft
+Authentication Library). It offers tools to interact with both
+services, manage authentication, and handle data requests.
+
+\textbf{Main components}
+\begin{enumerate}
+	\item \texttt{DataverseConnector} class manages connection and data retrieval from Microsoft Dataverse using OData Web API
+	\item \texttt{connect\_to\_powerbi} function handles connections to Power BI API for retrieving data
+\end{enumerate}
+
+\textbf{Dependencies}
+
+Before trying to use the script, ensure that the following Python packages are installed by running
+\begin{verbatim}
+	pip install msal requests pandas
+\end{verbatim}
+
+\textbf{Usage Example}
+
+For Dataverse
+\begin{verbatim}
+	connector = DataverseConnector("path/to/auth_details.json")
+	data = connector.obtainJson("accounts")
+	print(data)
+\end{verbatim}
+
+For Power BI
+\begin{verbatim}
+	cdata = connect_to_powerbi("groups", "path/to/auth_details.json")
+	print(data)	
+\end{verbatim}
+
+\subsubsection{\texttt{download\_data.py}}
+
+This script is designed to fetch data from Microsoft Dataverse, process it, and save it in CSV format. It uses the \texttt{DataverseConnector} class from \texttt{app\_connect.py} to authenticate and retrieve data from the Dataverse Web API.
+
+\newpage
+
+\textbf{Usage Example}
+
+To execute the script, run it as is, or modify the \texttt{entities\_to\_process} and \\ \texttt{output\_directory} variables.
+
+\subsubsection{\texttt{table\_inventarization.py}}
+
+This script performs a comprehensive inventory of given tables within Microsoft Dataverse. It retrieves metadata, attributes, and relationships for a set of specified tables and outputs this information into a JSON file. The resulting inventory can be used for further analysis or reporting on the structure and contents of the tables.
+
+\textbf{Usage Example}
+
+This script is designed to run as is, but if you need to modify the list of tables to process or change the output directory, you can update the \texttt{entities\_to\_process} list or the path where the JSON is saved.
+
+\subsubsection{\texttt{solution\_inventarization.py}}
+
+This script is responsible for gathering and inventorying metadata about solutions and their components. The data is retrieved, processed, and saved as a JSON file. This provides insight into various components related to a solution such as entities, apps, web resources, and more.
+
+\textbf{Usage Example}
+
+To run the script, simply execute it as is, however if you need to modify the list of solutions to process or change the output directory, you can update the \\ \texttt{solutions\_to\_process} list or the path where the JSON is saved.
+
+\subsection{Markdown Generation Scripts}
+
+These are the helper scripts I used to generate parts of this documentation from json inventories. They are not crucial to understand but I documented them either way.
+
+Each script follows a similar pattern
+\begin{enumerate}
+	\item Read JSON data
+	\item Generate raw Markdown
+	\item Save Markdown as .md file
+\end{enumerate}
+
+\subsection{Note}
+Each of these scripts are documented in the form of Python Docstrings as well as comments within their respective files.
